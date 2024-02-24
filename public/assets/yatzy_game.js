@@ -19,7 +19,7 @@ function rollAllDice() {
         updateScoresAfterRoll(); // 
     }
     
-    if (gameState.rollCount === 3) {
+    if (gameState.rollCount === 13) {
         console.log("No more rolls allowed this turn.");
         document.getElementById('roll-dice').disabled = true;
     }
