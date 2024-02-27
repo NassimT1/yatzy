@@ -1,1 +1,1 @@
-How to run: Open the public/assets folder. Run test.html to play the game
+How to run: Open the public folder. Run test.html to play the game
