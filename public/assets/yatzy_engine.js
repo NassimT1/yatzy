@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Allow confirming a score of 0
             if ((this.classList.contains('score-possible') && this.classList.contains('clickable')) || (scoreValue === 0 && this.classList.contains('clickable'))) {
                 this.classList.add('score-confirmed');
-                this.style.fontWeight = 'bold'; // Make it bold
+                this.style.fontWeight = 'bold'; 
                 this.classList.remove('score-possible');
 
                 // Mark the score as selected within gameState
