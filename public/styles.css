@@ -7,6 +7,20 @@
     margin-bottom: 45px;
 }
 
+.footer {
+    position: absolute; 
+    bottom: 0; 
+    left: 10; 
+    z-index: 10;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+a:link, a:visited {
+    color: black;
+}
+
 .dice-container {
     display: flex;
     margin-top: 45px;
