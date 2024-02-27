@@ -1,7 +1,15 @@
 /* Reference: https://dcode.domenade.com/tutorials/how-to-create-a-dice-roll-game-with-html-css-and-javascript */
 
+.howToPlay {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 45px;
+}
+
 .dice-container {
     display: flex;
+    margin-top: 45px;
 }
 
 .roll-button, .startOverButton-main {
