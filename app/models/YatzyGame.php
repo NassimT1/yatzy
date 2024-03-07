@@ -35,3 +35,5 @@ function toggleKeep(&$gameState, $index) {
 function gameEnd($gameState) {
     return $gameState["currentRound"] === 13;
 }
+
+?>

@@ -67,3 +67,4 @@ function scoreUpperSection($diceValues, $number) {
     return count(array_filter($diceValues, function($value) use ($number) { return $value === $number; })) * $number;
 }
 
+?>
