@@ -62,5 +62,47 @@
           <button id="finalStartOverButton" class="gameOver">Start Over</button>
         </div>
       </div>
+
+      <script>
+        $(document).ready(function() {
+        // Function to send a request to the API
+        function sendRequest(action, data, callback) {
+            $.ajax({
+                url: 'api.php',
+                type: 'POST',
+                data: {
+                    action: action,
+                    data: data
+                },
+                success: function(response) {
+                    callback(response);
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        // Example: Send a request to roll all dice
+        $('#roll-dice').click(function() {
+            sendRequest('rollAllDice', null, function(response) {
+                // Update the UI based on the response
+                var gameState = JSON.parse(response).gameState;
+                var diceContainer = document.getElementById('dice-container');
+                drawDice(diceContainer, gameState.diceValues);
+            });
+        });
+
+        $('#roll-dice').click(function() {
+            sendRequest('rollAllDice', null, function(response) {
+                // Update the UI based on the response
+                var gameState = JSON.parse(response).gameState;
+                var diceContainer = document.getElementById('dice-container');
+                drawDice(diceContainer, gameState.diceValues);
+            });
+        });
+
+    });
+      </script>
 </body>
 </html>
