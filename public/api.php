@@ -1,13 +1,11 @@
 <?php
-// Include the Yatzy class file
 require_once '../app/models/Yatzy.php';
+require_once '../app/models/GameState.php';
 
-// Initialize the Yatzy game
 $yatzy = new Yatzy();
+$gameStateModel = new GameState();
 
-// Check the request method
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Handle POST requests
     $action = $_POST['action'] ?? null;
     $data = $_POST['data'] ?? null;
 
@@ -26,6 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case 'gameEnd':
             $isGameEnd = $yatzy->gameEnd();
             echo json_encode(['gameEnd' => $isGameEnd]);
+            break;
+        case 'saveGameState':
+            $gameState = json_decode($data, true);
+            $gameStateModel->save($gameState);
+            echo json_encode(['success' => true]);
+            break;
+        case 'loadGameState':
+            $gameState = $gameStateModel->load();
+            echo json_encode(['gameState' => $gameState]);
             break;
         default:
             echo json_encode(['error' => 'Invalid action']);

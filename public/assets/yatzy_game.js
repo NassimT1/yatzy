@@ -4,7 +4,8 @@ window.gameState = {
     keep: [false, false, false, false, false],
     currentRound: 0,
     selectedScores: {}, // Added to track confirmed scores
-    roundStarted: false
+    roundStarted: false,
+    currentScore: 0
 };
 
 // Roll all dice, respecting the keep state

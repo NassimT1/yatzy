@@ -154,6 +154,8 @@ function updateNonClickableScores() {
 
     // Calculate and update the final total score
     const finalTotal = totalTop + totalBottom;
+    gameState.currentScore = finalTotal;
+    console.log(gameState.currentScore);
     document.getElementById('final-total-value').textContent = finalTotal;
     if(gameEnd()) {
         console.log("Game over. Your final score is: ", finalTotal, " points");

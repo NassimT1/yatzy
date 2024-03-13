@@ -10,7 +10,6 @@
     <script src="assets/dice.js"></script>
     <script src="assets/yatzy_game.js"></script>
     <script src="assets/yatzy_engine.js"></script>
-    
 </head>
 <body>
     <div class="howToPlay">
@@ -19,7 +18,6 @@
     <div class="dice-container" id="dice-container"></div>
     <button type="button" class="roll-button" id="roll-dice">Roll Dice</button>
     <button type="button" class="startOverButton-main" id="startOverButton">Start Over</button>
-
 
     <div class="score-sheet">
         <div class="grid top-scores">
@@ -61,31 +59,69 @@
           <!-- Start Over Button -->
           <button id="finalStartOverButton" class="gameOver">Start Over</button>
         </div>
-      </div>
+    </div>
 
-      <script>
+    <div id="leaderboard">
+        <h2>Leaderboard</h2>
+        <div id="leaderboard-content"></div>
+    </div>
+
+    <script>
         $(document).ready(function() {
-        // Function to send a request to the API
-        function sendRequest(action, data, callback) {
-            $.ajax({
-                url: 'api.php',
-                type: 'POST',
-                data: {
-                    action: action,
-                    data: data
-                },
-                success: function(response) {
-                    callback(response);
-                },
-                error: function(error) {
-                    console.error(error);
-                }
+            // Function to send a request to the API
+            function sendRequest(action, data, callback) {
+                $.ajax({
+                    url: 'api.php',
+                    type: 'POST',
+                    data: {
+                        action: action,
+                        data: data
+                    },
+                    success: function(response) {
+                        callback(response);
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            }
+
+            // Function to load the leaderboard
+            function loadLeaderboard() {
+                $.ajax({
+                    url: 'leaderboard.php',
+                    type: 'GET',
+                    success: function(data) {
+                        $('#leaderboard-content').html(data);
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            }
+
+            // Call the loadLeaderboard function when the page loads
+            loadLeaderboard();
+
+            // Example: Save the game state when the game ends
+            function gameEnd() {
+                // Your game end logic here
+                sendRequest('saveGameState', gameState, function(response) {
+                    console.log('Game state saved successfully');
+                });
+            }
+
+            // Example: Load the game state when the game starts
+            $(document).ready(function() {
+                sendRequest('loadGameState', null, function(response) {
+                    if (response.gameState) {
+                        gameState = response.gameState;
+                        updateGameDisplay();
+                        console.log('Game state loaded successfully');
+                    }
+                });
             });
-        }
-
-        
-
-    });
-      </script>
+        });
+    </script>
 </body>
 </html>
