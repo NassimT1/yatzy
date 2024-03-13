@@ -13,18 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     switch ($action) {
         case 'rollAllDice':
-            $yatzy->rollAllDice($yatzy->gameState);
+            $yatzy->rollAllDice();
             echo $yatzy->toJson();
             break;
         case 'toggleKeep':
             $index = $data['index'] ?? null;
             if ($index !== null) {
-                $yatzy->toggleKeep($yatzy->gameState, $index);
+                $yatzy->toggleKeep($index);
                 echo $yatzy->toJson();
             }
             break;
         case 'gameEnd':
-            $isGameEnd = $yatzy->gameEnd($yatzy->gameState);
+            $isGameEnd = $yatzy->gameEnd();
             echo json_encode(['gameEnd' => $isGameEnd]);
             break;
         default:
@@ -32,6 +32,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
     }
 } else {
-    // Handle other request methods (GET, etc.) if needed
     echo json_encode(['error' => 'Invalid request method']);
 }

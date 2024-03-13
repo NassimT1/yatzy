@@ -35,9 +35,6 @@ class Yatzy {
             $gameState["rollCount"]++;
             $gameState["roundStarted"] = true;
         }
-        
-        if ($gameState["rollCount"] === 3) {
-        }
     }
     
     function toggleKeep(&$gameState, $index) {

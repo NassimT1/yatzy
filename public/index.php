@@ -83,24 +83,7 @@
             });
         }
 
-        // Example: Send a request to roll all dice
-        $('#roll-dice').click(function() {
-            sendRequest('rollAllDice', null, function(response) {
-                // Update the UI based on the response
-                var gameState = JSON.parse(response).gameState;
-                var diceContainer = document.getElementById('dice-container');
-                drawDice(diceContainer, gameState.diceValues);
-            });
-        });
-
-        $('#roll-dice').click(function() {
-            sendRequest('rollAllDice', null, function(response) {
-                // Update the UI based on the response
-                var gameState = JSON.parse(response).gameState;
-                var diceContainer = document.getElementById('dice-container');
-                drawDice(diceContainer, gameState.diceValues);
-            });
-        });
+        
 
     });
       </script>
